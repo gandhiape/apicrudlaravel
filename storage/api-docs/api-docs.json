@@ -1,0 +1,96 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Dokumentasi API PraktikumApi",
+        "description": "Satria Dava Riansa",
+        "contact": {
+            "email": "email@example.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "/"
+        }
+    ],
+    "paths": {
+        "/api/mahasiswas": {
+            "get": {
+                "tags": [
+                    "Mahasiswa"
+                ],
+                "summary": "Dapatkan daftar semua mahasiswa",
+                "description": "Mengembalikan daftar semua mahasiswa",
+                "operationId": "getMahasiswa",
+                "responses": {
+                    "200": {
+                        "description": "Daftar mahasiswa",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/components/schemas/Mahasiswa"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Mahasiswa": {
+                "title": "Mahasiswa",
+                "description": "Model Mahasiswa",
+                "properties": {
+                    "id": {
+                        "description": "ID mahasiswa",
+                        "type": "integer"
+                    },
+                    "nama": {
+                        "description": "Nama mahasiswa",
+                        "type": "string"
+                    },
+                    "nim": {
+                        "description": "Nomor Induk Mahasiswa",
+                        "type": "string"
+                    },
+                    "email": {
+                        "description": "Email mahasiswa",
+                        "type": "string"
+                    },
+                    "jurusan": {
+                        "description": "Jurusan mahasiswa",
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        },
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "bearerFormat": "JWT",
+                "scheme": "bearer"
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Mahasiswa",
+            "description": "Mahasiswa"
+        }
+    ]
+}
